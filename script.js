@@ -82,6 +82,18 @@ function saveNamespace(langIso, langText) {
     }
 }
 
+function getCurrentNamespace() {
+
+    // save the current namespace, if not selected using the translation control
+    var passedNS = jQuery('#door43CurrentLanguage').val();
+    if (passedNS) {
+        var passedParts = passedNS.split(':');
+        return passedParts[0]
+    }
+
+    return '';
+}
+
 /**
  * Remove go button from translation dropdown
  */

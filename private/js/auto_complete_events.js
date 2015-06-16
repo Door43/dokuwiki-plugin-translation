@@ -48,8 +48,10 @@ function translationSelectNamespace(langIso, langText) {
     saveNamespace(langIso, langText)
 
     var action = jQuery('#namespace-auto-complete-action').val();
-    var pos = action.indexOf(':');
-    if (pos > -1) action = action.substr(pos + 1);
+    var currentNS = getCurrentNamespace();
+    var pos = action.indexOf(currentNS + ':');
+    if (pos === 0) action = action.substr(currentNS.length + 1);
+    action = action.replace(':', '/');
 
     window.location.href = DOKU_BASE + langIso + '/' + action;
 }
